@@ -8,4 +8,4 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::apiResource("v1/tasks", TaskController::class);
+Route::apiResource("v1.tasks", TaskController::class);
