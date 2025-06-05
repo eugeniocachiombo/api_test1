@@ -46,7 +46,7 @@ class TaskController extends Controller
     {
         $task = Task::find($id);
 
-        if (count($task) > 0) {
+        if ($task) {
             return response()->json($task, 200);
         }
 
