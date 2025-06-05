@@ -77,8 +77,8 @@ class TaskController extends Controller
         ];
 
         $messages = [
-            "title.required" => "O estado é obrigatório",
-            "title.string" => "O estado deve ser letras",
+            "status.required" => "O estado é obrigatório",
+            "status.string" => "O estado deve ser letras",
             "user_id.required" => "O id do usuário é obrigatório",
             "user_id.numeric" => "O id do usuário deve ser numérico",
         ];
