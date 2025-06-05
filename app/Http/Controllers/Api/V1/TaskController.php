@@ -70,7 +70,25 @@ class TaskController extends Controller
 
     public function update(Request $request, string $id)
     {
-       
+
+       $rules = [
+            "status" => "required|string",
+            "user_id" => "required|numeric",
+        ];
+
+        $messages = [
+            "title.required" => "O estado é obrigatório",
+            "title.string" => "O estado deve ser letras",
+            "user_id.required" => "O id do usuário é obrigatório",
+            "user_id.numeric" => "O id do usuário deve ser numérico",
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
         $task = Task::where("id", $id)
         ->where("user_id", $request->user_id)
         ->first();
