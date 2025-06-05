@@ -69,7 +69,7 @@ class TaskController extends Controller
     public function filterByStatusAll(string $status)
     {
         $task = Task::where("status", $status)->get();
-
+        
         if (count($task) > 0) {
             return response()->json($task, 200);
         }
