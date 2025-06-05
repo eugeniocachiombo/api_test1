@@ -62,18 +62,7 @@ class TaskController extends Controller
         }
 
         if (count($task->get()) > 0) {
-            return response()->json($task, 200);
-        }
-
-        return response()->json(["message" => "Nenhuma informação encontrada"], 404);
-    }
-
-    public function filterByStatusAll(string $status)
-    {
-        $task = Task::where("status", $status)->get();
-        
-        if (count($task) > 0) {
-            return response()->json($task, 200);
+            return response()->json($task->get(), 200);
         }
 
         return response()->json(["message" => "Nenhuma informação encontrada"], 404);

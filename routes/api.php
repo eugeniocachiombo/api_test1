@@ -9,7 +9,6 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::prefix("/v1")->group(function () {
-    Route::get("/tasks/status/{status}", [TaskController::class, "filterByStatusAll"]);
-    Route::get("/tasks/status/{status}/user/{user_id}", [TaskController::class, "filterByStatus"]);
+    Route::get("/tasks/status/{status}", [TaskController::class, "filterByStatus"]);
     Route::apiResource("/tasks", TaskController::class);
 });
