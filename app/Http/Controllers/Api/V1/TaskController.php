@@ -42,7 +42,18 @@ class TaskController extends Controller
         return response()->json(["message" => "Cadastrado com sucesso"], 201);
     }
 
-    public function show(string $status, int $user_id)
+    public function show(int $id)
+    {
+        $task = Task::find($id);
+
+        if (count($task) > 0) {
+            return response()->json($task, 200);
+        }
+
+        return response()->json(["message" => "Nenhuma informação encontrada"], 404);
+    }
+
+    public function filterByStatus(string $status, int $user_id)
     {
         $task = Task::where("status", $status)
         ->where("user_id", $user_id)
