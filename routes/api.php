@@ -8,4 +8,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::apiResource("v1.tasks", TaskController::class);
+Route::prefix("/v1")->group(function () {
+    Route::apiResource("/tasks", TaskController::class);
+    Route::get("/tasks/{status}/{user_id}", [TaskController::class, "show"]);
+});

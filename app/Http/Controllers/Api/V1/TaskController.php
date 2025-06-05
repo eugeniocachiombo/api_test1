@@ -10,23 +10,12 @@ use Illuminate\Support\Facades\Validator;
 
 class TaskController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $tasks = Task::with("user")->get();
         return TaskResource::collection($tasks);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create() {}
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $rules = [
@@ -53,9 +42,6 @@ class TaskController extends Controller
         return response()->json(["message" => "Cadastrado com sucesso"], 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $status, int $user_id)
     {
         $task = Task::where("status", $status)
@@ -69,20 +55,20 @@ class TaskController extends Controller
         return response()->json(["message" => "Nenhuma informação encontrada"], 404);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+       
+        $task = Task::where("id", $id)
+        ->where("user_id", $request->user_id)
+        ->first();
+        
+        if ($task) {
+            $task->status = $request->status;
+            $task->save();
+            return response()->json(["message" => "Actualizado com sucesso"], 200);
+        }
+
+        return response()->json(["message" => "Nenhuma informação encontrada"], 404);
     }
 
     /**
