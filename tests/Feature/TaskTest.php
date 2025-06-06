@@ -63,6 +63,12 @@ class TaskTest extends TestCase
         $response->assertStatus(200);
     }
 
+    public function test_api_filterByUser(){
+        $task = Task::where("user_id", $this->user_id)->get();
+        $response = $this->getJson("api/v1/tasks/user/{$this->user_id}");
+        $response->assertStatus(200);
+    }
+
     public function test_api_delete()
     {
         $task = Task::find($this->id);
