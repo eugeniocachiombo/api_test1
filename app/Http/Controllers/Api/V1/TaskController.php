@@ -20,12 +20,15 @@ class TaskController extends Controller
     {
         $rules = [
             "title" => "required|string|min:3",
+            "description" => "nullable|string|min:3",
             "user_id" => "required|numeric",
         ];
 
         $messages = [
             "title.required" => "O nome é obrigatório",
             "title.string" => "O nome deve ser letras",
+            "title.min" => "deve conter 3 caracteres no mínimo",
+            "description.string" => "A descrição deve ser texto",
             "title.min" => "deve conter 3 caracteres no mínimo",
             "user_id.required" => "O id do usuário é obrigatório",
             "user_id.numeric" => "O id do usuário deve ser numérico",
