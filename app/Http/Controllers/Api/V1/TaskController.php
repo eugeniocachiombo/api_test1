@@ -20,7 +20,6 @@ class TaskController extends Controller
     {
         $rules = [
             "title" => "required|string|min:3",
-            "description" => "nullable",
             "user_id" => "required|numeric",
         ];
 
