@@ -10,5 +10,6 @@ Route::get('/user', function (Request $request) {
 
 Route::prefix("/v1")->group(function () {
     Route::get("/tasks/status/{status}", [TaskController::class, "filterByStatus"]);
+    Route::get("/tasks/user/{user_id}", [TaskController::class, "filterByUser"]);
     Route::apiResource("/tasks", TaskController::class);
 });

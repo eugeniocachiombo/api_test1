@@ -53,21 +53,6 @@ class TaskController extends Controller
         return response()->json(["message" => "Nenhuma informação encontrada"], 404);
     }
 
-    public function filterByStatus(Request $request, string $status)
-    {
-        $task = Task::where("status", $status);
-
-        if ($request->user_id) {
-            $task->where("user_id", $request->user_id);
-        }
-
-        if (count($task->get()) > 0) {
-            return response()->json($task->get(), 200);
-        }
-
-        return response()->json(["message" => "Nenhuma informação encontrada"], 404);
-    }
-
     public function update(Request $request, string $id)
     {
 
@@ -102,9 +87,6 @@ class TaskController extends Controller
         return response()->json(["message" => "Nenhuma informação encontrada"], 404);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $task = Task::find($id);
@@ -115,6 +97,31 @@ class TaskController extends Controller
         }
 
         return response()->json(["message" => "Nenhuma informação encontrada"], 404);
+    }
     
+    public function filterByStatus(Request $request, string $status)
+    {
+        $task = Task::where("status", $status);
+
+        if ($request->user_id) {
+            $task->where("user_id", $request->user_id);
+        }
+
+        if (count($task->get()) > 0) {
+            return response()->json($task->get(), 200);
+        }
+
+        return response()->json(["message" => "Nenhuma informação encontrada"], 404);
+    }
+
+    public function filterByUser(Request $request, int $user_id)
+    {
+        $task = Task::where("user_id", $user_id)->get();
+
+        if (count($task) > 0) {
+            return response()->json($task, 200);
+        }
+
+        return response()->json(["message" => "Nenhuma informação encontrada"], 404);
     }
 }
