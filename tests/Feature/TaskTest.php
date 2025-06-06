@@ -8,13 +8,24 @@ use Tests\TestCase;
 
 class TaskTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
-    public function test_example(): void
-    {
-        $response = $this->get('/');
+
+    public function test_api_index(){
+
+        $response = $this->getJson("api/v1/tasks");
 
         $response->assertStatus(200);
+    }
+
+    public function test_api_store(){
+        
+        $data = [
+            "title" => "Test",
+            "description" => "nullable",
+            "user_id" => 1,
+        ];
+
+        $response = $this->postJson("api/v1/tasks", $data);
+
+        $response->assertStatus(201);
     }
 }
