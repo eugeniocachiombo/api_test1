@@ -10,6 +10,9 @@ use Tests\TestCase;
 class TaskTest extends TestCase
 {
 
+    public $id = 2;
+    public $user_id = 1;
+
     public function test_api_index()
     {
 
@@ -24,7 +27,7 @@ class TaskTest extends TestCase
         $data = [
             "title" => "Test",
             "description" => "nullable",
-            "user_id" => 1,
+            "user_id" => $this->user_id,
         ];
 
         $response = $this->postJson("api/v1/tasks", $data);
@@ -34,8 +37,26 @@ class TaskTest extends TestCase
 
     public function test_api_show()
     {
-        $task = Task::find(1);
+        $task = Task::find($this->id);
         $response = $this->getJson("api/v1/tasks/{$task->id}");
+        $response->assertStatus(200);
+    }
+
+    public function test_api_update()
+    {
+        $task = Task::find($this->id);
+        $data = [
+            "status" => "em_andamento",
+            "user_id" => $this->user_id,
+        ];
+        $response = $this->putJson("api/v1/tasks/{$task->id}", $data);
+        $response->assertStatus(200);
+    }
+
+    public function test_api_delete()
+    {
+        $task = Task::find($this->id);
+        $response = $this->deleteJson("api/v1/tasks/{$task->id}");
         $response->assertStatus(200);
     }
 }
