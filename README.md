@@ -31,6 +31,7 @@
 <p>
 Com o <b>cmd</b> ou <b>terminal</b> aberto, selecionar o caminho do diretório do projecto api_test1 e executar o comando <b>"php artisan migrate"</b>.
 </p>
+
 <p>
 Se existir uma base de dados com o nome apitest1, todas informações serão importadas. Caso não existir aparecerá a seguinte questão:
 
@@ -43,3 +44,7 @@ Se existir uma base de dados com o nome apitest1, todas informações serão imp
 Escrever simplesmente a palavra <b>"yes"</b>, que a base de dados será criada automáticamente e todas migrations serão importadas 
 </p>
 
+#### Nota:
+<p>
+Para a execução deste projecto, após a migration ser executada, é recomendado executar o comando <b>"php artisan db:seed"</b>  para criar falsos utilizadores para facilitar na criação de tarefas.
+</p>
