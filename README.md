@@ -62,3 +62,15 @@ Após a execução deste comando será emitido um endereço: <b>127.0.0.1:8000</
 <p>
 Com o aparecimento deste endereço no terminal, o projecto está em execução. 
 </p>
+
+### Como testar a API via (Postman)
+
+<ul>
+<li>Abrir o Postman</li>
+<li>Escolher o verbo (GET, POST, PUT, DELETE) na barra de endereço</li>
+<li>Caso for GET</li>
+    <ul type="none">
+    <li>Passar o seguinte endpoint na url: <b>127.0.0.1:8000/api/v1/tasks/</b></li>
+    <li>Caso retornar [] ou a lista de tarefas, a API está funcional</b></li>
+    </ul>
+</ul>
