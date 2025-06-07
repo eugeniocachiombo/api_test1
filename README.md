@@ -1,5 +1,4 @@
 ## Como configurar o projecto
----
 
 ### Download do projecto
 
@@ -26,4 +25,21 @@
 <li>Renomear o arquivo <b>".env example"</b> para simplesmente <b>".env"</b></li>
 <li>Executar o comando <b>"php artisan key:generate"</b></li>
 </ul>
+
+### Como rodar migrations
+
+<p>
+Com o <b>cmd</b> ou <b>terminal</b> aberto, selecionar o caminho do diretório do projecto api_test1 e executar o comando <b>"php artisan migrate"</b>.
+</p>
+<p>
+Se existir uma base de dados com o nome apitest1, todas informações serão importadas. Caso não existir aparecerá a seguinte questão:
+
+<strong>
+    WARN  The database 'apitest1' does not exist on the 'mysql' connection.  
+
+  Would you like to create it? (yes/no) [yes]
+</strong> 
+
+Escrever simplesmente a palavra <b>"yes"</b>, que a base de dados será criada automáticamente e todas migrations serão importadas 
+</p>
 
