@@ -106,7 +106,7 @@ class TaskController extends Controller
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Tarefa encontrada com sucesso."
+     *         description="Tarefa encontrada."
      *     ),
      *     @OA\Response(
      *         response=404,
@@ -122,7 +122,7 @@ class TaskController extends Controller
             return response()->json($task, 200);
         }
 
-        return response()->json(["message" => "Nenhuma informação encontrada"], 404);
+        return response()->json(["message" => "Tarefa não encontrada."], 404);
     }
 
     /**
