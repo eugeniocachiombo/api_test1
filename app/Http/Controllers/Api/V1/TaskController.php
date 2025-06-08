@@ -269,6 +269,30 @@ class TaskController extends Controller
         return response()->json(["message" => "Nenhuma informação encontrada"], 404);
     }
 
+
+    /**
+     * @OA\Get(
+     *     path="/v1/tasks/user/{user_id}",
+     *     tags={"Tasks"},
+     *     summary="Filtrar tarefas por usuário",
+     *     description="Retorna todas as tarefas associadas a um usuário específico pelo ID.",
+     *     @OA\Parameter(
+     *         name="user_id",
+     *         in="path",
+     *         required=true,
+     *         description="ID do usuário",
+     *         @OA\Schema(type="integer", example=1)
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Lista de tarefas do usuário."
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Nenhuma tarefa encontrada para o usuário."
+     *     )
+     * )
+     */
     public function filterByUser(Request $request, int $user_id)
     {
         $task = Task::where("user_id", $user_id)->get();
