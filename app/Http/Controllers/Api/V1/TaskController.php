@@ -187,6 +187,30 @@ class TaskController extends Controller
         return response()->json(["message" => "Nenhuma informação encontrada"], 404);
     }
 
+
+    /**
+     * @OA\Delete(
+     *     path="/v1/tasks/{id}",
+     *     tags={"Tasks"},
+     *     summary="Eliminar tarefa",
+     *     description="Eliminar uma tarefa existente pelo ID.",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="ID da tarefa",
+     *         @OA\Schema(type="string", example="1")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Tarefa eliminada com sucesso."
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Tarefa não encontrada."
+     *     )
+     * )
+     */
     public function destroy(string $id)
     {
         $task = Task::find($id);
