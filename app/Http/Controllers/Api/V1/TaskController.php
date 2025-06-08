@@ -18,13 +18,20 @@ class TaskController extends Controller
      *     description="Retorna todas as tarefas cadastradas.",
      *     @OA\Response(
      *         response=200,
-     *         description="Lista de tarefas retornada com sucesso."
+     *         description="Lista de tarefas cadastradas."
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Nenhuma informação encontrada."
      *     )
      * )
      */
     public function index()
     {
         $tasks = Task::with("user")->get();
+        if (count($tasks) == 0) {
+            return response()->json(["message" => "Nenhuma informação encontrada"], 404);
+        }
         return TaskResource::collection($tasks);
     }
 
