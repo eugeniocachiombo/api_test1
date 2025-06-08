@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Desafio Api 1",
-        "version": "0.1"
+        "version": "1.0"
     },
     "servers": [
         {
@@ -16,7 +16,7 @@
                     "/v1/tasks"
                 ],
                 "summary": "Buscar todas as tarefas",
-                "description": "Este endpoint é resposnsável por retornar todas as tarefas cadastradas",
+                "description": "Este endpoint é resposnsável por retornar todas as tarefas cadastradas. Não requer nenhum parametro.",
                 "operationId": "cef450ac078bbbd790a9b74cad86791a",
                 "responses": {
                     "200": {

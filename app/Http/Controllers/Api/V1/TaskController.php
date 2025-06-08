@@ -10,6 +10,20 @@ use Illuminate\Support\Facades\Validator;
 
 class TaskController extends Controller
 {
+    /**
+     * @OA\Get(
+     *  tags={"/v1/tasks"},
+     *  summary="Buscar todas as tarefas",
+     *  path="/v1/tasks",
+     *  description="Este endpoint é resposnsável por retornar todas as tarefas cadastradas. Não requer nenhum parametro.",
+     * 
+     * @OA\Response(
+     *  response="200", description="Retorno da lista"
+     *  )
+     * )
+     * @return TaskResource
+     */
+
     public function index()
     {
         $tasks = Task::with("user")->get();
