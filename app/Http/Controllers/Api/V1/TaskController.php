@@ -30,6 +30,31 @@ class TaskController extends Controller
         return TaskResource::collection($tasks);
     }
 
+
+    /**
+     * @OA\POST(
+     *  tags={"/v1/tasks"},
+     *  summary="Cadastrar nova tarefa",
+     *  path="/v1/tasks",
+     *  description="Este endpoint é resposnsável por criar uma nova tarefa",
+     * 
+     * @OA\RequestBody(
+     *      required=true, 
+     *      @OA\JsonContent(
+     *          type="object", 
+     *          @OA\Property(property="title", type="string"),
+     *          @OA\Property(property="description", type="string"),
+     *          @OA\Property(property="user_id", type="int"),
+     *      )
+     *  ),
+     * 
+     * @OA\Response(
+     *  response="201", description="Cadastrado com sucesso"
+     *  )
+     * )
+     * @param Request
+     * @return TaskResource
+     */
     public function store(Request $request)
     {
         $rules = [

@@ -23,6 +23,40 @@
                         "description": "Retorno da lista"
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "/v1/tasks"
+                ],
+                "summary": "Cadastrar nova tarefa",
+                "description": "Este endpoint é resposnsável por criar uma nova tarefa",
+                "operationId": "970a65037b4a2dfd6481ba305e8f606b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "user_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Cadastrado com sucesso"
+                    }
+                }
             }
         }
     },
