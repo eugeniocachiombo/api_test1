@@ -87,7 +87,7 @@ class TaskController extends Controller
         }
 
         Task::create($validator->validated());
-        return response()->json(["message" => "Cadastrado com sucesso"], 201);
+        return response()->json(["message" => "Tarefa criada com sucesso."], 201);
     }
 
 
