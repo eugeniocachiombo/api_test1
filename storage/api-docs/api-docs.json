@@ -1,0 +1,35 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Teste de Api",
+        "version": "0.1"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/api"
+        }
+    ],
+    "paths": {
+        "/tasks": {
+            "get": {
+                "tags": [
+                    "/tasks"
+                ],
+                "summary": "Olá Mundo",
+                "description": "Olá Mundo",
+                "operationId": "19db9bcf6cfc82a01437fdb46b235ed7",
+                "responses": {
+                    "200": {
+                        "description": "Retorno da lista"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "/tasks",
+            "description": "/tasks"
+        }
+    ]
+}
