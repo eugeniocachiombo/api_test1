@@ -224,10 +224,10 @@ class TaskController extends Controller
 
         if ($task) {
             $task->delete();
-            return response()->json(["message" => "Eliminado com sucesso"], 200);
+            return response()->json(["message" => "Tarefa eliminada com sucesso."], 200);
         }
 
-        return response()->json(["message" => "Nenhuma informação encontrada"], 404);
+        return response()->json(["message" => "Tarefa não encontrada."], 404);
     }
 
 
