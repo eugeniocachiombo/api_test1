@@ -67,6 +67,7 @@ Após a execução deste comando será emitido um endereço: <b>127.0.0.1:8000</
 Com o aparecimento deste endereço no terminal, o projecto está em execução. 
 </p>
 ___
+<hr>
 
 
 ### Como testar a API via (Postman)
