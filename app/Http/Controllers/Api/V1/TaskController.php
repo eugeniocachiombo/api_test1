@@ -12,18 +12,16 @@ class TaskController extends Controller
 {
     /**
      * @OA\Get(
-     *  tags={"/v1/tasks"},
-     *  summary="Buscar todas as tarefas",
-     *  path="/v1/tasks",
-     *  description="Este endpoint é resposnsável por retornar todas as tarefas cadastradas. Não requer nenhum parametro.",
-     * 
-     * @OA\Response(
-     *  response="200", description="Retorno da lista"
-     *  )
+     *     path="/v1/tasks",
+     *     tags={"Tasks"},
+     *     summary="Buscar todas as tarefas",
+     *     description="Retorna todas as tarefas cadastradas.",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Lista de tarefas retornada com sucesso."
+     *     )
      * )
-     * @return TaskResource
      */
-
     public function index()
     {
         $tasks = Task::with("user")->get();
@@ -32,29 +30,31 @@ class TaskController extends Controller
 
 
     /**
-     * @OA\POST(
-     *  tags={"/v1/tasks"},
-     *  summary="Cadastrar nova tarefa",
-     *  path="/v1/tasks",
-     *  description="Este endpoint é resposnsável por criar uma nova tarefa",
-     * 
-     * @OA\RequestBody(
-     *      required=true, 
-     *      @OA\JsonContent(
-     *          type="object", 
-     *          @OA\Property(property="title", type="string"),
-     *          @OA\Property(property="description", type="string"),
-     *          @OA\Property(property="user_id", type="int"),
-     *      )
-     *  ),
-     * 
-     * @OA\Response(
-     *  response="201", description="Cadastrado com sucesso"
-     *  )
+     * @OA\Post(
+     *     path="/v1/tasks",
+     *     tags={"Tasks"},
+     *     summary="Cadastrar nova tarefa",
+     *     description="Cria uma nova tarefa.",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"title", "user_id"},
+     *             @OA\Property(property="title", type="string", example="Tarefa 1"),
+     *             @OA\Property(property="description", type="string", example="Descrição a tarefa"),
+     *             @OA\Property(property="user_id", type="integer", example=1)
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Tarefa criada com sucesso."
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Erro de validação."
+     *     )
      * )
-     * @param Request
-     * @return TaskResource
      */
+
     public function store(Request $request)
     {
         $rules = [
@@ -97,7 +97,7 @@ class TaskController extends Controller
     public function update(Request $request, string $id)
     {
 
-       $rules = [
+        $rules = [
             "status" => "required|string",
             "user_id" => "required|numeric",
         ];
@@ -116,9 +116,9 @@ class TaskController extends Controller
         }
 
         $task = Task::where("id", $id)
-        ->where("user_id", $request->user_id)
-        ->first();
-        
+            ->where("user_id", $request->user_id)
+            ->first();
+
         if ($task) {
             $task->status = $request->status;
             $task->save();
@@ -131,7 +131,7 @@ class TaskController extends Controller
     public function destroy(string $id)
     {
         $task = Task::find($id);
-        
+
         if ($task) {
             $task->delete();
             return response()->json(["message" => "Eliminado com sucesso"], 200);
@@ -139,7 +139,7 @@ class TaskController extends Controller
 
         return response()->json(["message" => "Nenhuma informação encontrada"], 404);
     }
-    
+
     public function filterByStatus(Request $request, string $status)
     {
         $task = Task::where("status", $status);
