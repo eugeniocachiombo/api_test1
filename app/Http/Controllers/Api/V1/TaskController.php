@@ -83,6 +83,31 @@ class TaskController extends Controller
         return response()->json(["message" => "Cadastrado com sucesso"], 201);
     }
 
+
+    /**
+     * @OA\Get(
+     *     path="/v1/tasks/{id}",
+     *     tags={"Tasks"},
+     *     summary="Buscar tarefa por ID",
+     *     description="Retorna os dados de uma tarefa específica pelo ID.",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="ID da tarefa",
+     *         @OA\Schema(type="integer", example=1)
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Tarefa encontrada com sucesso."
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Tarefa não encontrada."
+     *     )
+     * )
+     */
+
     public function show(int $id)
     {
         $task = Task::find($id);

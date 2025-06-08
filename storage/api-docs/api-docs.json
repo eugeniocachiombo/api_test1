@@ -68,6 +68,36 @@
                     }
                 }
             }
+        },
+        "/v1/tasks/{id}": {
+            "get": {
+                "tags": [
+                    "Tasks"
+                ],
+                "summary": "Buscar tarefa por ID",
+                "description": "Retorna os dados de uma tarefa específica pelo ID.",
+                "operationId": "2f173fadd6c381d3758d7a0578e660e3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da tarefa",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tarefa encontrada com sucesso."
+                    },
+                    "404": {
+                        "description": "Tarefa não encontrada."
+                    }
+                }
+            }
         }
     },
     "tags": [
