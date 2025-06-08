@@ -6,15 +6,18 @@
     },
     "servers": [
         {
-            "url": "http://localhost/api"
+            "url": "http://127.0.0.1:8000/api/v1"
         }
     ],
     "paths": {
-        "/api/v1/tasks": {
+        "/tasks": {
             "get": {
-                "summary": "Olá Mundo",
-                "description": "Olá Mundo",
-                "operationId": "b07f65b771b24b2f1a573bbaef391dad",
+                "tags": [
+                    "/tasks"
+                ],
+                "summary": "Buscar todas as tarefas",
+                "description": "Este endpoint é resposnsável por retornar todas as tarefas cadastradas",
+                "operationId": "19db9bcf6cfc82a01437fdb46b235ed7",
                 "responses": {
                     "200": {
                         "description": "Retorno da lista"
@@ -22,5 +25,11 @@
                 }
             }
         }
-    }
+    },
+    "tags": [
+        {
+            "name": "/tasks",
+            "description": "/tasks"
+        }
+    ]
 }
