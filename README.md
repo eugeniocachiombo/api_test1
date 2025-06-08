@@ -25,7 +25,7 @@
 <li>Renomear o arquivo <b>".env example"</b> para simplesmente <b>".env"</b></li>
 <li>Executar o comando <b>"php artisan key:generate"</b></li>
 </ul>
-___
+<hr>
 
 
 ### Como rodar migrations
@@ -50,7 +50,7 @@ Escrever simplesmente a palavra <b>"yes"</b>, que a base de dados será criada a
 <p>
 Para a execução deste projecto, após a migration ser executada, é recomendado executar o comando <b>"php artisan db:seed"</b>  para criar falsos utilizadores para facilitar na criação de tarefas.
 </p>
-___
+<hr>
 
 
 ### Como executar o servidor local
@@ -66,7 +66,6 @@ Após a execução deste comando será emitido um endereço: <b>127.0.0.1:8000</
 <p>
 Com o aparecimento deste endereço no terminal, o projecto está em execução. 
 </p>
-___
 <hr>
 
 
