@@ -107,7 +107,6 @@ class TaskController extends Controller
      *     )
      * )
      */
-
     public function show(int $id)
     {
         $task = Task::find($id);
@@ -119,6 +118,41 @@ class TaskController extends Controller
         return response()->json(["message" => "Nenhuma informação encontrada"], 404);
     }
 
+    /**
+     * @OA\Put(
+     *     path="/v1/tasks/{id}",
+     *     tags={"Tasks"},
+     *     summary="Actualizar tarefa",
+     *     description="Actualiza o status de uma tarefa existente.",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="ID da tarefa",
+     *         @OA\Schema(type="string", example="1")
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"status", "user_id"},
+     *             @OA\Property(property="status", type="string", example="concluído"),
+     *             @OA\Property(property="user_id", type="integer", example=1)
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Tarefa actualizada com sucesso."
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Tarefa não encontrada."
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Erro de validação."
+     *     )
+     * )
+     */
     public function update(Request $request, string $id)
     {
 
