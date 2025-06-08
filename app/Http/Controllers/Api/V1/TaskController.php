@@ -236,7 +236,7 @@ class TaskController extends Controller
      *     path="/v1/tasks/status/{status}",
      *     tags={"Tasks"},
      *     summary="Filtrar tarefas por status",
-     *     description="Retorna tarefas com o status informado. Pode filtrar opcionalmente por user_id via query parameter.",
+     *     description="Retorna tarefas com o status informado. Pode filtrar opcionalmente por user_id.",
      *     @OA\Parameter(
      *         name="status",
      *         in="path",
@@ -257,7 +257,7 @@ class TaskController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Nenhuma tarefa encontrada com esse filtro."
+     *         description="Nenhuma tarefa encontrada"
      *     )
      * )
      */
@@ -273,7 +273,7 @@ class TaskController extends Controller
             return response()->json($task->get(), 200);
         }
 
-        return response()->json(["message" => "Nenhuma informação encontrada"], 404);
+        return response()->json(["message" => "Nenhuma tarefa encontrada"], 404);
     }
 
 
