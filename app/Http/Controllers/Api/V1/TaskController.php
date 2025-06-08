@@ -188,10 +188,10 @@ class TaskController extends Controller
         if ($task) {
             $task->status = $request->status;
             $task->save();
-            return response()->json(["message" => "Actualizado com sucesso"], 200);
+            return response()->json(["message" => "Tarefa actualizada com sucesso."], 200);
         }
 
-        return response()->json(["message" => "Nenhuma informação encontrada"], 404);
+        return response()->json(["message" => "Tarefa não encontrada."], 404);
     }
 
 
