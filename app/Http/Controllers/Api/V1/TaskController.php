@@ -296,7 +296,7 @@ class TaskController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Nenhuma tarefa encontrada para o usuário."
+     *         description="Nenhuma tarefa encontrada"
      *     )
      * )
      */
@@ -308,6 +308,6 @@ class TaskController extends Controller
             return response()->json($task, 200);
         }
 
-        return response()->json(["message" => "Nenhuma informação encontrada"], 404);
+        return response()->json(["message" => "Nenhuma tarefa encontrada"], 404);
     }
 }
